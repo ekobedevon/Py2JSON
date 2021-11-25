@@ -1,12 +1,16 @@
 import json as js
 import os
-
+#   Name:   Delete Range
+#   Input:  A List of any type
+#           A int of the starting index(inclusive)
+#           A int of the ending index(inclusive)
+#   Output: The previous list missing the indexs start-end
 def deleteRange(data,start,end):
     print("Deleting from index " + str(start) +" to " + str(end))
     for x in range(start-1,end):
         old = data.pop(start-1)
         print(old + " removed from list")
-    print()
+    print() #just to add a new line
     return data
 
 
@@ -63,22 +67,25 @@ INSTRUCTIONS:
                     data.append(response)
 
         elif choice == 3: #delete entries
-            old = ""
-            num = 0;
+            old = "" # use to store the old word
             choice2 = int(input("Select Options:\n1)Delete single entry \n2)Delete Range of Entries\n0)Exit\nChoice: "))
-            if choice2 == 1:
-                while num != -1:
+            if choice2 == 1: #Delete a single index at a time
+                num = 0 #used below
+                while num != -1: 
                     num = int(input("Enter the index to delete, -1 to exit: "))
-                    if 0 <= num <= len(data) : # if the number is valid
-                        old = data.pop(num)
-                        print(old + " removed from list \n")
-            if choice2 == 2:
+                    if 0 <= num <= len(data) : # if the number index
+                        old = data.pop(num-1) # -1 to account for the offset of printing index vs how its stored
+                        print(old + " removed from list \n") # tell the user which item was removed
+            if choice2 == 2: # delete a range of values
                 start = int(input("Enter the index to start deletion(inclusive): "))
                 end = int(input("Enter the index to end deletion(inclusive): "))
                 if start >= end:
                     print("INVALID INDEXES")
                 else:
                     data = deleteRange(data,start,end)
-
+        elif choice == 4: #edit entries
+            num = int(input("Enter the index to edit, -1 to exit: "))
+            if 0 < num <= len(data): #if a valid index
+                print("Current entry at index #" + str(num)+ " :" + data[num-1] )
 
             
