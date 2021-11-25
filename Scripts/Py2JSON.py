@@ -2,9 +2,11 @@ import json as js
 import os
 
 def deleteRange(data,start,end):
-    for x in range(start,end):
-        old = data.pop(start)
-        print(old + " removed from list \n")
+    print("Deleting from index " + str(start) +" to " + str(end))
+    for x in range(start-1,end):
+        old = data.pop(start-1)
+        print(old + " removed from list")
+    print()
     return data
 
 
@@ -39,7 +41,7 @@ def editJson_FromFile():
 
     choice = 1;
     while choice != 0:
-        choice = int(input("Select Options:\n1)Print Out The List\n2)Append entries to list\n0)Exit\nChoice: "))
+        choice = int(input("Select Options:\n1)Print Out The List\n2)Append entries to list\n3)Delete entries from list\n0)Exit\nChoice: "))
         if choice == 1: #print out all the strings in the list
             for index,word in enumerate(data):
                 print(str(index+1) + ") " + word)
@@ -71,8 +73,8 @@ INSTRUCTIONS:
                         old = data.pop(num)
                         print(old + " removed from list \n")
             if choice2 == 2:
-                start = int(input("Enter the index to start deletion(inclusive)"))
-                end = int(input("Enter the index to end deletion(inclusive)"))
+                start = int(input("Enter the index to start deletion(inclusive): "))
+                end = int(input("Enter the index to end deletion(inclusive): "))
                 if start >= end:
                     print("INVALID INDEXES")
                 else:
