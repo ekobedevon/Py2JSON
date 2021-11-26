@@ -9,7 +9,6 @@ Menu
 """
 ans = ""
 chdir("./Json Files") # Set the working directory to the Json Files
-p2j.changeDirectory()
 
 
 
