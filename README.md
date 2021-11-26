@@ -11,4 +11,5 @@ Change the current working directory or add a new one.
 
 ## How to run
 Currently only able to run in terminal. Requires [Python 3](https://www.python.org/downloads/)
+
 Load the Python terminal and simply run the script.
