@@ -1,5 +1,5 @@
 # Py2JSON
-A python script to modify JSON files using pythons build in list and dictionary functions
+A python script to modify JSON files using pythons build in list and dictionary functions by Kobe Edmond
 
 ## Functionality
 ### Create New List
