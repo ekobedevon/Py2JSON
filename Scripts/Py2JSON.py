@@ -12,11 +12,29 @@ def deleteRange(data,start,end):
         print(old + " removed from list")
     print() #just to add a new line
     return data
+#   Name:   Print Files
+#   Output: A list of all files in the current directory
 
+def printFiles():
+    file_list = os.listdir("./")
+    for index,file_name in enumerate(file_list):
+        print(str(index) +") " +file_name)
+
+#   Name: File Name Check
+#   Input: A File Name
+#   Output: A boolean based on if the file is present in the current directory
+def fileNameCheck(file_name = "") -> bool:
+    file_list = os.listdir("./")
+    if file_name in file_list: 
+        return True 
+    else:
+        return False
+    
 
 #   NAME: New Json
 #   Output: A Json file to storage
-def newJson_FromList():
+
+def newJson_FromList(): 
     print("""
 INSTRUCTIONS:
 1) Enter a name for your list, this will be used to name the file. It will overwrite a file of the same name.
@@ -38,7 +56,12 @@ INSTRUCTIONS:
 #-------------------------------------------------------  
 
 def editJson_FromFile():
-    file_name= input("Enter a file name:")
+    print("All files in current directory:")
+    printFiles() #Print all the file avaiable to be read
+    file_name= input("Enter a file name(without extension): ")
+    while fileNameCheck(file_name + ".json") == False:
+        print("Invalid Name, Please Try Again:")
+        file_name= input("Enter a file name(without extension): ")
     file = open(file_name + ".json");
 
     data = js.load(file) # load the data into an array
