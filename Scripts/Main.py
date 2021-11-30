@@ -18,7 +18,7 @@ while ans != 0:
     if ans == 1: # create new json file
         p2j.newJson_FromList() #create a list to generate a new json file.
     elif ans == 2: #load a previous json list
-        p2j.editJson_FromFile()
+        p2j.editJson()
     elif ans == 3: #modify directories
         p2j.changeDirectory()
 

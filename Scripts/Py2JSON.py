@@ -16,12 +16,17 @@ def deleteRange(data,start,end):
 
 #   Name:   Print Files
 #   Output: A list of all files in the current directory
-def printFiles(directory_path = "./"):
+def printFiles(directory_path = "./",directory_or_file = "directory"):
     file_list = os.listdir(directory_path)
-    for index,file_name in enumerate(file_list):
-        if ".json" in file_name:
-            pass
-        print(str(index) +") " +file_name)
+    if directory_or_file is "file":
+        for index,file_name in enumerate(file_list):
+            if ".json" not in file_name:
+                print(str(index) +") " +file_name)
+    else:
+        for index,file_name in enumerate(file_list):
+            if ".json" in file_name:
+                print(str(index) +") " +file_name)              
+    
 
 #   Name: File Name Check
 #   Input: A File Name
@@ -32,6 +37,7 @@ def fileNameCheck(file_name = "") -> bool:
         return True 
     else:
         return False
+
 def validNameCheck(directory_name = "")-> bool:
     illegal = "#%&}{\\<>*?/$!\'\":@+`|=" #all illegal characters for file names
     #for each letter in the illegal letter set, if present in the directory name, return false and exit funtion
@@ -108,10 +114,12 @@ INSTRUCTIONS:
 def editJson():
     print("All files in current directory:")
     printFiles() #Print all the file avaiable to be read
-    file_name= input("Enter a file name(without extension): ")
+    file_name= input("Enter a file name(without extension)(type -1 to exit): ")
     while fileNameCheck(file_name + ".json") == False:
         print("Invalid Name, Please Try Again:")
-        file_name= input("Enter a file name(without extension): ")
+        file_name= input("Enter a file name(without extension)(type -1 to exit): ")
+        if(file_name == "-1"):
+            return;
     editJson_FromFile(file_name)
 
 
