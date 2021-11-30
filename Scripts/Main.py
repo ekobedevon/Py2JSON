@@ -8,7 +8,7 @@ Menu
 2) Load a list from a json and edit
 """
 ans = ""
-chdir("./Json Files") # Set the working directory to the Json Files
+chdir("./Json_Files") # Set the working directory to the Json Files
 
 
 

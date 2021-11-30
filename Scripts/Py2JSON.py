@@ -68,7 +68,7 @@ def changeDirectory():
            
             pick = int(input("Select the directory: "))
             if pick == 0: #change the directory back to home of Json Files
-                os.chdir("./Json Files")
+                os.chdir("./Json_Files")
             elif pick in validIndex: #set the new directory if the index is valid
                 os.chdir("./" + file_list[pick-1])
             else:
