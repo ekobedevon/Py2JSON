@@ -18,7 +18,7 @@ def deleteRange(data,start,end):
 #   Output: A list of all files in the current directory
 def printFiles(directory_path = "./",directory_or_file = "directory"):
     file_list = os.listdir(directory_path)
-    if directory_or_file is "file":
+    if directory_or_file == "file":
         for index,file_name in enumerate(file_list):
             if ".json" not in file_name:
                 print(str(index) +") " +file_name)
@@ -50,12 +50,14 @@ def changeDirectory():
     choice = 1;
     while choice != 0:
         choice = int(input("\nSelect Options:\n1)Print out current Sub-Directories\n2)Change Directories\n3)Create new directory\n0)Exit\nChoice: "))
+        print()
         if choice == 1: #print out all directories
              file_list = os.listdir("./")
              print("All Sub-Directories of current Directory: ")
              for index,file_name in enumerate(file_list): # print out all directories
                 if "." not in file_name: #skips any files becasue of the . before the extension
                     print(str(index+1) +") " +file_name)
+                    
         elif choice == 2: #change directories
             file_list = os.listdir("./")
             print("All Sub-Directories of current Directory: ")
@@ -68,6 +70,8 @@ def changeDirectory():
            
             pick = int(input("Select the directory: "))
             if pick == 0: #change the directory back to home of Json Files
+                while "Json_Files" in os.getcwd():
+                    os.chdir("..")
                 os.chdir("./Json_Files")
             elif pick in validIndex: #set the new directory if the index is valid
                 os.chdir("./" + file_list[pick-1])
